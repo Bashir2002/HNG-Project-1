@@ -68,6 +68,11 @@ button{
 .footers p{
   font-size: 10px;
 }
+button:hover{
+  background-color: gray;
+  cursor: pointer;
+  color: white;
+}
 @media screen and (max-width: 500px) {
   .footers img{
     height: 15px;
