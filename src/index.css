@@ -39,8 +39,8 @@ img{
   gap: 1rem;
   justify-content: space-between;
 }
-button{
-  padding: 1rem 3rem;
+.tag{
+  padding: 0.8rem 3rem;
   background-color: #EAECF0;
   border: none;
 }
@@ -68,7 +68,7 @@ button{
 .footers p{
   font-size: 10px;
 }
-button:hover{
+.tag:hover{
   background-color: gray;
   cursor: pointer;
   color: white;

@@ -14,11 +14,15 @@ function App() {
           const { id, key, url, sit, desc } = item
 
           return (
-            <button key={key} id={id} class={sit}>
-              <a href={url} target='_blank'>
-                {desc}{' '}
-              </a>
-            </button>
+            <a
+              key={key}
+              id={id}
+              class={`tag ${sit}`}
+              href={url}
+              target='_blank'
+            >
+              {desc}{' '}
+            </a>
           )
         })}
       </div>
