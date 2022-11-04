@@ -3,14 +3,6 @@ import logo from '../I4G.png'
 import zuri from '../zuri.png'
 
 import styled from 'styled-components'
-// import { PageHero } from '../components'
-// import Linked from '../Linkedin.png'
-// import Dribble from '../Dribble.png'
-// import Twitter from '../Twitter.png'
-// import Medium from '../Medium.png'
-// import emailjs from '@emailjs/browser'
-
-// import aboutImg from '../assets/hero-bcg.jpeg'
 
 const ContactPage = () => {
   const [firstName, setFirstName] = React.useState('')
@@ -212,7 +204,7 @@ const Wrapper = styled.section`
   }
   label {
     font-family: 'Alpino-Regular';
-    font-size: 1.5rem;
+    font-size: 1.2rem;
     // margin-bottom: 5rem;
   }
   .name div,
