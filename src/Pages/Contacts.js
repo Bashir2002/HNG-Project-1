@@ -173,6 +173,7 @@ const Wrapper = styled.section`
   .check {
     display: flex;
     gap: 0.5rem;
+    align-items: center;
     // justify-content: start;
   }
   .check input {
