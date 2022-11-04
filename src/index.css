@@ -23,6 +23,18 @@ a{
   color: unset;
   text-decoration: none;
 }
+.cv4-btn{
+  padding:1rem 1.2rem;
+  border: none;
+  width: 100%;
+  border-radius: 30px;
+  text-align: center;
+  cursor: pointer;
+  background-color:#1570EF;
+  color: white;
+  margin-top: 1rem;
+}
+
 .none{
   display: none;
 }
@@ -39,10 +51,11 @@ img{
   gap: 1rem;
   justify-content: space-between;
 }
-.tag{
-  padding: 0.8rem 3rem;
+.button{
+  padding: 1rem 3rem;
   background-color: #EAECF0;
   border: none;
+  border-radius: 5px;
 }
 .socials img{
   height:  20px;
@@ -67,11 +80,6 @@ img{
 }
 .footers p{
   font-size: 10px;
-}
-.tag:hover{
-  background-color: gray;
-  cursor: pointer;
-  color: white;
 }
 @media screen and (max-width: 500px) {
   .footers img{
