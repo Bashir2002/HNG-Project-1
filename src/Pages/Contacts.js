@@ -368,7 +368,7 @@ const Wrapper = styled.section`
       padding-left: 1rem;
     }
     #info {
-      font-size: 1.1rem;
+      font-size: 1rem;
       padding-right: 1rem;
     }
     .about {
