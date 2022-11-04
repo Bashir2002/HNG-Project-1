@@ -23,6 +23,12 @@ a{
   color: unset;
   text-decoration: none;
 }
+.alert-danger , #term{
+  color:red;
+  font-size: 0.9rem;
+  /* background: #f8d7da; */
+}
+
 .cv4-btn{
   padding:1rem 1.2rem;
   border: none;

@@ -1,46 +1,69 @@
-import React, { useRef } from 'react'
+import React, { useRef, useState } from 'react'
 import logo from '../I4G.png'
 import zuri from '../zuri.png'
+import Alert from '../Alert'
 
 import styled from 'styled-components'
+
+// const check = useRef()
+const isEmail = (email) =>
+  /^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,4}$/i.test(email)
 
 const ContactPage = () => {
   const [firstName, setFirstName] = React.useState('')
   const [lastName, setlastName] = React.useState('')
-  const [email, setEmail] = React.useState('')
+  // const [email, setEmail] = React.useState('')
+  const [values, setValues] = useState({ email: '' })
+  const [errors, setErrors] = useState({})
+  const [error1, setError1] = React.useState(true)
   const [message, setMessage] = React.useState('')
+  const [check1, setCheck] = React.useState(true)
+  const [alert1, setAlert] = React.useState({
+    show: false,
+    msg: '',
+    type: '',
+  })
+  const check = useRef()
+
   const form = useRef()
 
-  const sendEmail = (e) => {
-    e.preventDefault()
+  const showAlert = (show = false, type = '', msg = '') => {
+    setAlert({ show, type, msg })
+  }
+  const Validation = async () => {
+    console.log('crazy')
+    if (firstName === '' || lastName === '' || message === '') {
+      showAlert(true, 'danger', 'input cannot be empty')
+      console.log('crazy2')
+      console.log(alert1.type)
+    } else {
+      showAlert('mad', '', '')
+    }
+    const errors = {}
+    if (!isEmail(values.email)) {
+      setError1(true)
+      errors.email = 'Wrong email'
+    } else setError1(false)
 
-    //     var params = {
-    //       name: `${firstName} ${lastName}`,
-    //       email: email,
-    //       message: message,
-    //     }
-    //     if (firstName === '' && email === '' && message === '') {
-    //       alert('input field is empty')
-    //     } else
-    //       emailjs
-    //         .send(
-    //           'service_fowzbaj',
-    //           'template_5xtnofs',
-    //           params,
-    //           'bJuHV43wl24US7DKx'
-    //         )
-    //         .then(
-    //           (result) => {
-    //             setEmail('')
-    //             setFirstName('')
-    //             setlastName('')
-    //             setMessage('')
-    //             alert('message sent successfully')
-    //           },
-    //           (error) => {
-    //             alert('message not sent,check your connection and Try again')
-    //           }
-    //         )
+    setErrors(errors)
+
+    if (alert1.show === 'mad' && error1 === false && check1 === true) {
+      alert('Message sent successfully')
+    } else {
+      // alert('Message sent successfully')
+    }
+  }
+  const setEmail = (e) => {
+    setValues((values) => ({ ...values, email: e.target.value }))
+  }
+  const sendEmail = async (e) => {
+    e.preventDefault()
+    await Validation()
+    if (check.current.checked) {
+      setCheck(true)
+    } else {
+      setCheck(false)
+    }
   }
 
   return (
@@ -53,6 +76,7 @@ const ContactPage = () => {
           </p>
         </div>
         <form
+          action=''
           ref={form}
           onSubmit={(e) => {
             sendEmail(e)
@@ -72,6 +96,9 @@ const ContactPage = () => {
                 name='firstName'
                 id='first_name'
               />
+              {alert1.show && firstName === '' && (
+                <Alert {...alert1} rem={showAlert} />
+              )}
             </div>
             <div className='second'>
               <label htmlFor='second'>Last Name</label>
@@ -85,6 +112,9 @@ const ContactPage = () => {
                 name='lastName'
                 id='last_name'
               />
+              {alert1.show && lastName === '' && (
+                <Alert {...alert1} rem={showAlert} />
+              )}
             </div>
           </div>
           <div className='email'>
@@ -92,13 +122,23 @@ const ContactPage = () => {
             <input
               type='email'
               placeholder='yourname@email.com'
-              value={email}
-              onChange={(e) => {
-                setEmail(e.target.value)
-              }}
-              name='Email'
+              value={values.email}
+              onChange={(e) => setEmail(e)}
+              name='email'
               id='email'
             />
+            {Object.entries(errors).map(([key, error]) => (
+              <span
+                key={`${key}: ${error}`}
+                style={{
+                  // fontWeight: 'bold',
+                  color: 'red',
+                }}
+              >
+                {key}: {error}
+              </span>
+            ))}
+            {/* {alert.show && <Alert {...alert} rem={showAlert} />} */}
           </div>
           <div className='message'>
             <label htmlFor='message'>Message</label>
@@ -114,13 +154,19 @@ const ContactPage = () => {
               cols='35'
               id='message'
             />
+            {alert1.show && message === '' && (
+              <Alert {...alert1} rem={showAlert} />
+            )}
           </div>
+
           <div className='check'>
-            <input type='checkbox' name='' id='checkbox' />
+            <input type='checkbox' ref={check} name='' id='checkbox' />
             <p>
               You agree to providing your data to Bashir who may contact you.
             </p>
           </div>
+          {!check1 && <p id='term'>Terms and Condition</p>}
+
           <button
             type='submit'
             id='btn_submit'
@@ -300,13 +346,13 @@ const Wrapper = styled.section`
     padding: 3rem 0;
     width: 50%;
   }
-  p {
-    line-height: 1.5;
-    // max-width: 45em;
-    // margin: 0 auto;
-    // margin-top: 2rem;
-    color: #475467;
-  }
+  // .p {
+  //   line-height: 1.5;
+  //   // max-width: 45em;
+  //   // margin: 0 auto;
+  //   // margin-top: 2rem;
+  //   color: #475467;
+  // }
   .back {
     font-weight: bolder;
   }
