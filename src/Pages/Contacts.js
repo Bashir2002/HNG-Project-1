@@ -31,10 +31,8 @@ const ContactPage = () => {
     setAlert({ show, type, msg })
   }
   const Validation = async () => {
-    console.log('crazy')
     if (firstName === '' || lastName === '' || message === '') {
       showAlert(true, 'danger', 'input cannot be empty')
-      console.log('crazy2')
       console.log(alert1.type)
     } else {
       showAlert('mad', '', '')
@@ -49,6 +47,12 @@ const ContactPage = () => {
 
     if (alert1.show === 'mad' && error1 === false && check1 === true) {
       alert('Message sent successfully')
+      setValues({ email: '' })
+      setFirstName('')
+      setlastName('')
+      setMessage('')
+      setCheck(true)
+      check.current.checked = false
     } else {
       // alert('Message sent successfully')
     }
@@ -64,6 +68,7 @@ const ContactPage = () => {
     } else {
       setCheck(false)
     }
+    // setEmail('')
   }
 
   return (
