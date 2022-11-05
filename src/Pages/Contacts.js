@@ -32,7 +32,7 @@ const ContactPage = () => {
   }
   const Validation = async () => {
     if (firstName === '' || lastName === '' || message === '') {
-      showAlert(true, 'danger', 'input cannot be empty')
+      showAlert(true, 'danger', 'Input cannot be empty')
       console.log(alert1.type)
     } else {
       showAlert('mad', '', '')
@@ -40,7 +40,7 @@ const ContactPage = () => {
     const errors = {}
     if (!isEmail(values.email)) {
       setError1(true)
-      errors.email = 'Wrong email'
+      errors.email = 'Please enter a valid email address'
     } else setError1(false)
 
     setErrors(errors)
@@ -54,7 +54,6 @@ const ContactPage = () => {
       setCheck(true)
       check.current.checked = false
     } else {
-      // alert('Message sent successfully')
     }
   }
   const setEmail = (e) => {
@@ -136,11 +135,12 @@ const ContactPage = () => {
               <span
                 key={`${key}: ${error}`}
                 style={{
+                  marginTop: `-10px`,
                   // fontWeight: 'bold',
                   color: 'red',
                 }}
               >
-                {key}: {error}
+                {error}
               </span>
             ))}
             {/* {alert.show && <Alert {...alert} rem={showAlert} />} */}
